@@ -25,14 +25,15 @@ app.get('/weather/:city', function(request, response){
 
     var body = '';
     res.on('data', function(d){
-      body += d;
+      body = body + d;
     });
 
     res.on('end', function(){
       var weather = JSON.parse(body)
-      response.send(weather['city:' +request.params.name]);
+      response.send(weather);
     })
   });
+  
 });
 
 app.listen('3000', function(){
